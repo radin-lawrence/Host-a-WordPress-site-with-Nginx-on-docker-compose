@@ -290,6 +290,8 @@ Save and close the file when you are finished editing.
 
 With your service definitions in place, you are ready to start the containers and test your certificate requests.
 
+##  Obtaining SSL Certificates and Credentials
+
 Create the containers with docker-compose up and the -d flag, which will run the database, wordpress, and nginx containers in the background:
 
 ```bash
@@ -331,6 +333,7 @@ You can now run docker-compose up to recreate the certbot container. We will als
 ```bash
 docker-compose up --force-recreate --no-deps certbot
 ```
+## Modifying the Web Server Configuration
 
 Enabling SSL in our Nginx configuration will involve adding an HTTP redirect to HTTPS, specifying our SSL certificate and key locations. Since you are going to recreate the nginx service to include these additions, you can stop it now:
 
