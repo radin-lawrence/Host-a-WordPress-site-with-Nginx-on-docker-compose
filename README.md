@@ -296,11 +296,16 @@ Create the containers with docker-compose up and the -d flag, which will run the
 docker-compose up -d
 ```
 
+![image](https://user-images.githubusercontent.com/100775027/163681961-40480483-a9d1-405c-ba9e-62c0da182906.png)
+
 Using docker-compose ps, check the status of your services:
 
 ```bash
 docker-compose ps
 ```
+
+![image](https://user-images.githubusercontent.com/100775027/163682074-210cae71-c314-4daa-8ae4-46b8d0179422.png)
+
 
 If everything was successful, your database, wordpress, and nginx services will be Up and the certbot container will have exited with a 0 status message:
 
@@ -507,6 +512,8 @@ docker-compose up -d --force-recreate --no-deps nginx
 
 
 With your containers running, you can now complete your WordPress installation through the web interface.
+
+![image](https://user-images.githubusercontent.com/100775027/163681990-a5f22a45-d02f-4a1b-a4ab-b8dea151c6ab.png)
 
 
 
