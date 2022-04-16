@@ -3,6 +3,9 @@
 
 In this tutorial, I will guide you step-by-step to use docker-compose. We will deploy 'Wordpress' with Nginx, MySQL, and PHP-FPM. Each service has its own container, and we will use images from the docker hub registry. I will show you how to create containers from docker images and manage all containers with docker-compose.
 
+![image](https://user-images.githubusercontent.com/100775027/163682867-a9b33d47-2a4d-4ac7-8689-f2e4da02c2dd.png)
+
+
 ## Features
 
 - Faster and easier configuration
