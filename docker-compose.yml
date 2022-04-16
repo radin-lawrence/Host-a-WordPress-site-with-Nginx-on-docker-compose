@@ -10,10 +10,10 @@ services:
     volumes:
       - mydb:/var/lib/mysql/
     environment:
-      - MYSQL_ROOT_PASSWORD=root@123
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=user@123
+      - MYSQL_ROOT_PASSWORD=<your_root_password>
+      - MYSQL_DATABASE=<your_wordpress_database_name>
+      - MYSQL_USER=<your_wordpress_database_user>
+      - MYSQL_PASSWORD=<your_wordpress_database_password>
 
   wordpress:
     image: wordpress:5.9-php7.4-fpm-alpine
@@ -24,9 +24,9 @@ services:
       - mywp:/var/www/html/
     environment:
       - WORDPRESS_DB_HOST=database
-      - WORDPRESS_DB_USER=user
-      - WORDPRESS_DB_PASSWORD=user@123
-      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_USER=<your_wordpress_database_user>
+      - WORDPRESS_DB_PASSWORD=<your_wordpress_database_password>
+      - WORDPRESS_DB_NAME=<your_wordpress_database_name>
 
 
   nginx:
@@ -48,7 +48,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - mywp:/var/www/html/
-    command: certonly --webroot --webroot-path=/var/www/html --email devops@gmail.com --agree-tos --no-eff-email --force-renewal  -d devops.radinlaw.tech -d www.devops.radinlaw.tech 
+    command: certonly --webroot --webroot-path=/var/www/html --email devops@gmail.com --agree-tos --no-eff-email --force-renewal  -d example.com -d www.example.com
 
 networks:
   mynet:
