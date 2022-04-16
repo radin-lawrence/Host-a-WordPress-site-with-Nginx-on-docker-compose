@@ -1,0 +1,61 @@
+version: "3"
+
+
+services: 
+  database:
+    image: mysql:latest
+    container_name: database
+    networks:
+      - mynet
+    volumes:
+      - mydb:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=root@123
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user@123
+
+  wordpress:
+    image: wordpress:5.9-php7.4-fpm-alpine
+    container_name: wordpress
+    networks:
+      - mynet
+    volumes:
+      - mywp:/var/www/html/
+    environment:
+      - WORDPRESS_DB_HOST=database
+      - WORDPRESS_DB_USER=user
+      - WORDPRESS_DB_PASSWORD=user@123
+      - WORDPRESS_DB_NAME=wordpress
+
+
+  nginx:
+    image: nginx:latest
+    ports: 
+      - "80:80"
+      - "443:443"
+    container_name: nginx
+    networks:
+      - mynet
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
+      - mywp:/var/www/html/
+      - certbot-etc:/etc/letsencrypt
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - mywp:/var/www/html/
+    command: certonly --webroot --webroot-path=/var/www/html --email devops@gmail.com --agree-tos --no-eff-email --force-renewal  -d devops.radinlaw.tech -d www.devops.radinlaw.tech 
+
+networks:
+  mynet:
+
+
+volumes:
+  mywp:
+  mydb:
+  certbot-etc:
+
