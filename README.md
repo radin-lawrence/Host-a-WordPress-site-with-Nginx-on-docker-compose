@@ -499,7 +499,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - mywp:/var/www/html/
-    command: certonly --webroot --webroot-path=/var/www/html --email sammy@example.com --agree-tos --no-eff-email --staging -d example.com -d www.example.com
+    command: certonly --webroot --webroot-path=/var/www/html --email sammy@example.com --agree-tos --no-eff-email --force-renewal -d example.com -d www.example.com
 
 networks:
   mynet:
